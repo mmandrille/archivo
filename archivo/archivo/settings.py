@@ -114,7 +114,43 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+#Configuraciones Propias
+MEDIA_URL = 'archivos/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "archivos")
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_source"),
+]
+
+#Sistema de accesos:
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'
+
+#Configuracion de Mail
+EMAIL_USE_TLS = True
+EMAIL_HOST = ''
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tucorreo@dominio.com'
+EMAIL_HOST_PASSWORD = 'tupassword'
+#CREAR ARCHIVO credenciales.py solo para Sobre Escribir con las variables importadas
+try:
+    from .credenciales import *
+except ImportError:
+    pass
+
+#Actualizar Statics, no solo nuevas
+AWS_PRELOAD_METADATA = True
+
+#Configuramos Tinymce
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,xhtmlxtras,paste,searchreplace",
+    'theme': "advanced",
+    "theme_advanced_buttons3_add" : "cite,abbr",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'width': '70%',
+    'height': '600',
+}
