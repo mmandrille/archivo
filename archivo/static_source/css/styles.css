@@ -227,6 +227,13 @@ section.pagina-registro h1, section.seccion-fotos h1
    color: white;
 }
 
+section.seccion-faq h2, section.seccion-archivos h2,
+section.pagina-registro h2, section.seccion-fotos h2
+{
+   text-align: center;
+   color: white;
+}
+
 section.seccion-faq hr
 {
     border-top: 1px solid #516bb3;

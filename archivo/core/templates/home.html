@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="home">
+  <section class="seccion-archivos full-width" id="archivos">
+    <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
+    <br>
+    <h1>Archivos</h1>
+    <hr>
+    <!--Buscador-->
+    <form method="post" class="buscar-archivos">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Buscar</button>
+    </form>
+    <hr>
+    <h2> Ultimos Archivos Subidos</h2>
+    <div class="lista-archivos">
+      <ul class="grid">
+        {% for archivo in archivos %}
+          <li class="grid-item">
+              <a href="/repositorio/{{ archivo.id }}">
+                  <br><h2>{{ archivo.nombre }}</h2>
+                  <div class="img">
+                    <img src="/{{ archivo.captura.url }}" alt="{{ archivo.nombre }}">
+                  </div>
+              </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+</section>
+
+{% endblock %}

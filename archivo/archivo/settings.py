@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Custom download
+    'tinymce',
+    #Agregamos nuestras apps
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -99,23 +103,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Configuraciones Propias
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'es-ar'
+TIME_ZONE = 'America/Argentina/Jujuy'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
-
-#Configuraciones Propias
+#Media Paths
 MEDIA_URL = 'archivos/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "archivos")
 STATIC_URL = '/static/'

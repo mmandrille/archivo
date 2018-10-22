@@ -4,8 +4,7 @@ Para poder probar este proyecto solo deben Instalar:
 
 Python3+
 
-Correr:
-
+Correr: 
 pip install -r requeriments.txt
 python3 manage.py createsuruser
 python3 manage.py runserver
