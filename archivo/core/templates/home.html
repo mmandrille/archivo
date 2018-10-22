@@ -6,7 +6,6 @@
     <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
     <br>
     <h1>Archivos</h1>
-    <hr>
     <!--Buscador-->
     <form method="post" class="buscar-archivos">
         {% csrf_token %}
@@ -14,7 +13,11 @@
         <button type="submit">Buscar</button>
     </form>
     <hr>
-    <h2> Ultimos Archivos Subidos</h2>
+    {% if buscado %}
+    <h2> Archivos Encontrados</h2>
+    {% else %}
+      <h2> Ultimos Archivos Subidos</h2>
+    {% endif %}
     <div class="lista-archivos">
       <ul class="grid">
         {% for archivo in archivos %}

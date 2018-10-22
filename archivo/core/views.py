@@ -13,12 +13,14 @@ def home(request):
         if form.is_valid():
             #Realizamos la busqueda
             archivos = Archivo.objects.filter(etiquetas__icontains=form.cleaned_data['texto'])
+            buscado = True
     else:
         archivos = Archivo.objects.order_by('fecha_aprobacion')[:4]
+        buscado = False
     #Obtenemos form de busqueda
     form = BuscarForm
     #Enviamos la pagina
-    return render(request, 'home.html', {'archivos': archivos, 'form': form })
+    return render(request, 'home.html', {'archivos': archivos, 'form': form, 'buscado': buscado })
 
 def mostrar_archivo(request, archivo_id):
     #Intentamos cargar el Archivo
