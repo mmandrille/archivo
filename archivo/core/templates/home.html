@@ -43,12 +43,18 @@
       </table>
     </div>
     <div class="sidebar col-md 3">
+      <!--AQUÍ VA EL LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
       <p>
         {% for etiqueta in etiquetas %}
           <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
         {% endfor %}
       </p>
       <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
+      <p>
+        {% for organismo in organismos %}
+          <a href='/organismo/{{ organismo.0 }}'>{{ organismo.1 }}</a>,
+        {% endfor %}
+      </p>
     </div>
   </section>
 
