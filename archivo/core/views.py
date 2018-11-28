@@ -16,10 +16,11 @@ def home(request):
             print(form.cleaned_data['texto'])
             archivos = Archivo.objects.filter(
                 Q(nombre__icontains=form.cleaned_data['texto'])|
-                Q(etiquetas__icontains=form.cleaned_data['texto']))
+                Q(etiquetas__icontains=form.cleaned_data['texto'])|
+                Q(resumen__icontains=form.cleaned_data['texto']))
             buscado = True
     else:
-        archivos = Archivo.objects.order_by('fecha_aprobacion')[:4]
+        archivos = Archivo.objects.order_by('fecha_aprobacion')[:12]
         buscado = False
     #Obtenemos form de busqueda
     form = BuscarForm

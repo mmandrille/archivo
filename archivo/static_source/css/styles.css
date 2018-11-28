@@ -1,19 +1,19 @@
-@font-face {
+/*@font-face {
     font-family: 'Archia';
     font-style: normal;
     font-weight: normal;
     src: local('Archia'), url('../fonts/Archia-Thin.otf') format('truetype');
-  }
+  }*/
 
 body
 {
-   font-family: Archia !important;
+   font-family: 'Roboto' !important;
 }
 
 .full-width
 {
     width: 100%;
-    height: calc(100vh - 60px);
+    /*height: calc(100vh - 60px);*/ 
     padding-top: 10%;
 }
 
@@ -313,9 +313,9 @@ section.seccion-faq p
 
 .seccion-archivos
 {
-   background: #ff3c74;
-   border: 10px solid white;
-   border-radius: 20px;
+   background: #00907e;
+   /*border: 10px solid white;*/
+   /*border-radius: 20px;*/
    padding-top: 40px;
 }
 
@@ -351,7 +351,6 @@ section.seccion-faq p
 
 .lista-archivos
 {
-    text-align: center;
     padding-left: 0px;
     margin-top: 20px;
     width: 100%;
@@ -360,22 +359,47 @@ section.seccion-faq p
     display: block;
 }
 
-.lista-archivos li a
-{
-   color: white;
+.lista-archivos ul {
+  margin: 0px;
+  padding: 0px;
 }
 
-.lista-archivos li:first-child
+.lista-archivos .grid-item {
+    height: 200px;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.lista-archivos .grid-item .item-content {
+    background: #f0f0f0;
+    border-radius: 5px;
+    height: 200px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 24px 21px -28px #313131, 0px 1px 2px 0 #00907e;
+    -moz-box-shadow: 0 24px 21px -28px #313131, 0px 1px 2px 0 #00907e;
+    box-shadow: 0 24px 21px -28px #313131, 0px 1px 2px 0 #00907e;
+}
+.lista-archivos .grid-item:hover .item-content{
+    background: white;
+}
+
+.lista-archivos li a
 {
-   max-height: 680px;
+   color: black;
+}
+
+.lista-archivos .item-content h2 a {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.lista-archivos .item-content p.resumen {
+  font-weight: 600;
 }
 
 .lista-archivos li
 {
     position: relative;
-    display: inline-block;
-    max-height: 330px;
-    margin: auto;
 }
 
 .lista-archivos li .img{
@@ -391,7 +415,7 @@ section.seccion-faq p
    max-height: 100%;
 }
 
-.lista-archivos li:hover img
+/*.lista-archivos li:hover img
 {
    opacity: 0.5;
     
@@ -400,19 +424,17 @@ section.seccion-faq p
     -ms-transition: opacity 500ms ease;
     -o-transition: opacity 500ms ease;
     transition: opacity 500ms ease;
-}
+}*/
 
 .lista-archivos li h2{
-    opacity: 0;
-    position: absolute;
-    bottom: 0px;
+    margin: 10px 0px;
     width: 100%;
 }
 
-.lista-archivos li:hover h2{
+/*.lista-archivos li:hover h2{
    opacity: 1;
    z-index: 1;
-}
+}*/
 
 /* Seccion Fotos */
 .seccion-fotos
@@ -569,12 +591,17 @@ section.seccion-faq p
 /* Seccion Mostrar Archivos */
 .mostrar-archivo
 {
-   display: table;
+   display: block;
    color: white;
-   width: 65%;
+   /*width: 65%;*/
    margin: auto;
    align-self: center;
    
+}
+
+.mostrar-archivo a {
+    color: #ffffff;
+    font-weight: 900;
 }
 
 .mostrar-archivo .col-md-6{
@@ -582,10 +609,10 @@ section.seccion-faq p
     width: 70%;
 }
 
-.mostrar-archivo .col-md-3{
+/*.mostrar-archivo .col-md-3{
     padding: 20px;
     width: 30%;
- }
+ }*/
 
 .mostrar-archivo .padding-top
 {

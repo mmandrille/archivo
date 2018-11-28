@@ -19,15 +19,23 @@
       <h2> Ultimos Archivos Subidos</h2>
     {% endif %}
     <div class="lista-archivos">
-      <ul class="grid">
+      <ul class="grid row">
         {% for archivo in archivos %}
-          <li class="grid-item">
-              <a href="/repositorio/{{ archivo.id }}">
-                  <br><h2>{{ archivo.nombre }}</h2>
-                  <div class="img">
-                    <img src="/{{ archivo.captura.url }}" alt="{{ archivo.nombre }}">
+          <li class="grid-item col-md-4">
+            <div>
+              <div class="item-content">
+                  <div class="col-md-4" style="background: white; height: 200px; padding: 0px;">
+                    <a href="/repositorio/{{ archivo.id }}">
+                      <img src="/{{ archivo.captura.url }}" alt="{{ archivo.nombre }}" width="120">
+                    </a>
                   </div>
-              </a>
+                  <div class="col-md-8">
+                    <h2><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></h2>
+                    <p class="resumen">{{ archivo.resumen }}</p>
+                    <p>{{ archivo.fecha_aprobacion }}</p>
+                  </div>
+                </div>
+            </div>
           </li>
         {% endfor %}
       </ul>
