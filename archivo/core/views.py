@@ -13,7 +13,6 @@ def home(request):
         form = BuscarForm(request.POST)
         if form.is_valid():
             #Realizamos la busqueda
-            print(form.cleaned_data['texto'])
             archivos = Archivo.objects.filter(
                 Q(nombre__icontains=form.cleaned_data['texto'])|
                 Q(etiquetas__icontains=form.cleaned_data['texto'])|
@@ -31,6 +30,15 @@ def mostrar_archivo(request, archivo_id):
     #Intentamos cargar el Archivo
     try:
         archivo = Archivo.objects.get(pk=archivo_id)
+    except Archivo.DoesNotExist:
+        raise Http404("El Archivo No Existe")
+    #Si salio bien mostramos el archivo
+    return render(request, 'mostrar_archivo.html', {'archivo': archivo, })
+
+def mostrar_archivo_nombre(request, archivo_nombre):
+    #Intentamos cargar el Archivo
+    try:
+        archivo = Archivo.objects.get(nombre=archivo_nombre)
     except Archivo.DoesNotExist:
         raise Http404("El Archivo No Existe")
     #Si salio bien mostramos el archivo

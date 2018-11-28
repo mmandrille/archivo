@@ -32,7 +32,7 @@ def obtener_organismos():
 #Create your models here.
 class Archivo(models.Model):
     nombre = models.CharField('Nombre', max_length=100)
-    expediente = models.CharField('Expediente', max_length=20)
+    expediente = models.CharField('Expediente', max_length=20, null=True, blank=True)
     tipo = models.IntegerField(choices=TIPOS_DE_ARCHIVOS, default=1)
     organismo = models.PositiveIntegerField(choices= obtener_organismos(), default=0)
     fecha_aprobacion = models.DateTimeField('Fecha de Aprobacion', default=datetime.datetime.now)
