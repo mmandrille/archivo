@@ -43,8 +43,12 @@
       </table>
     </div>
     <div class="sidebar col-md 3">
-      <!--AQUÍ VA EL LISTADO DE INSTITUCIONES (5)-->
-      <!--AQUÍ VA EL LISTADO DE ETIQUETAS (MAX 10)-->
+      <p>
+        {% for etiqueta in etiquetas %}
+          <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
+        {% endfor %}
+      </p>
+      <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
     </div>
   </section>
 

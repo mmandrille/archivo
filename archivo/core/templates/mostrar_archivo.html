@@ -12,7 +12,7 @@
             <h3>Etiquetas:</h3>
             <p class="etiquetas">
                 {% for etiqueta in archivo.etiquetas.all %}
-                    {{ etiqueta.name }}, 
+                    <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
                 {% endfor %}
             </p>
             <h3>Descripcion:</h3>

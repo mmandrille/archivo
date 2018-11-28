@@ -2,6 +2,8 @@ from django.http import Http404
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.db.models import Q
+#Import incluidos
+from taggit.models import Tag
 #Import Personales
 from .models import Archivo
 from .forms import BuscarForm
@@ -21,10 +23,24 @@ def home(request):
     else:
         archivos = Archivo.objects.order_by('fecha_aprobacion')[:12]
         buscado = False
+    #Obtenemos las 5 tags mas usadas
+    etiquetas = Archivo.etiquetas.most_common()[:5]
     #Obtenemos form de busqueda
     form = BuscarForm
     #Enviamos la pagina
-    return render(request, 'home.html', {'archivos': archivos, 'form': form, 'buscado': buscado })
+    return render(request, 'home.html', {'archivos': archivos, 'etiquetas': etiquetas, 'form': form, 'buscado': buscado })
+
+def mostrar_archivos_etiqueta(request, etiqueta_id):
+    #Obtenemos etiqueta
+    etiqueta = Tag.objects.get(pk=etiqueta_id)
+    #Obtenemos Archivos Taggeados
+    archivos = Archivo.objects.filter(etiquetas=etiqueta)
+    #Obtenemos las 5 tags mas usadas
+    etiquetas = Archivo.etiquetas.most_common()[:5]
+    #Obtenemos form de busqueda
+    form = BuscarForm
+    #Enviamos la pagina
+    return render(request, 'home.html', {'archivos': archivos, 'etiquetas': etiquetas, 'form': form, 'buscado': False })
 
 def mostrar_archivo(request, archivo_id):
     #Intentamos cargar el Archivo
