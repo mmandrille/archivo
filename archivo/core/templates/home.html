@@ -19,26 +19,28 @@
       <h2> Ultimos Archivos Subidos</h2>
     {% endif %}
     <div class="lista-archivos">
-      <ul class="grid row">
-        {% for archivo in archivos %}
-          <li class="grid-item col-md-4">
-            <div>
-              <div class="item-content">
-                  <div class="col-md-4" style="background: white; height: 200px; padding: 0px;">
-                    <a href="/repositorio/{{ archivo.id }}">
-                      <img src="/{{ archivo.captura.url }}" alt="{{ archivo.nombre }}" width="120">
-                    </a>
-                  </div>
-                  <div class="col-md-8">
-                    <h2><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></h2>
-                    <p class="resumen">{{ archivo.resumen }}</p>
-                    <p>{{ archivo.fecha_aprobacion }}</p>
-                  </div>
-                </div>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Decreto</th>
+            <th>Expediente</th>
+            <th>Resumen</th>
+            <th>Organismo</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for archivo in archivos %}
+            <tr>
+              <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></th>
+              <th>{{ archivo.expediente }}</th>
+              <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></th>
+              <th>{{ archivo.organismo }}</th>
+              <th>{{ archivo.fecha_aprobacion }}</th>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </section>
 
