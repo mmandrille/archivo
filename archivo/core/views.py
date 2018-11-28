@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.db.models import Q
 #Import Personales
 from .models import Archivo
 from .forms import BuscarForm
@@ -12,7 +13,10 @@ def home(request):
         form = BuscarForm(request.POST)
         if form.is_valid():
             #Realizamos la busqueda
-            archivos = Archivo.objects.filter(etiquetas__icontains=form.cleaned_data['texto'])
+            print(form.cleaned_data['texto'])
+            archivos = Archivo.objects.filter(
+                Q(nombre__icontains=form.cleaned_data['texto'])|
+                Q(etiquetas__icontains=form.cleaned_data['texto']))
             buscado = True
     else:
         archivos = Archivo.objects.order_by('fecha_aprobacion')[:4]
