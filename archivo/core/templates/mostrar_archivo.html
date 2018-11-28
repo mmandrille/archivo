@@ -10,7 +10,11 @@
         
         <div class="col-md-3">
             <h3>Etiquetas:</h3>
-            <p class="etiquetas">{{ archivo.etiquetas }}</p>
+            <p class="etiquetas">
+                {% for etiqueta in archivo.etiquetas.all %}
+                    {{ etiqueta.name }}, 
+                {% endfor %}
+            </p>
             <h3>Descripcion:</h3>
             <p class="descripcion">{{ archivo.resumen }}</p>
             <hr>
