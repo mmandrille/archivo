@@ -2,3 +2,4 @@ Django
 pillow
 requests
 django-tinymce
+django-taggit

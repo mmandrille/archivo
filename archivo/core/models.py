@@ -10,6 +10,7 @@ import json
 
 #Import Modulos Extra
 from tinymce.models import HTMLField
+from taggit.managers import TaggableManager
 
 #Import Personales
 from archivo.settings import MEDIA_URL
@@ -36,7 +37,7 @@ class Archivo(models.Model):
     tipo = models.IntegerField(choices=TIPOS_DE_ARCHIVOS, default=1)
     organismo = models.PositiveIntegerField(choices= obtener_organismos(), default=0)
     fecha_aprobacion = models.DateTimeField('Fecha de Aprobacion', default=datetime.datetime.now)
-    etiquetas = models.CharField('Etiquetas', max_length=200)
+    etiquetas = TaggableManager()
     resumen = models.CharField('Resumen', max_length=200)
     captura = models.ImageField(storage=FileSystemStorage(location=MEDIA_URL), null=True, blank=True)
     archivo = models.FileField(upload_to='')
