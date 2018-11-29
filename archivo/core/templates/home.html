@@ -24,25 +24,26 @@
                 {% endif %}
             </div>
             <div class="lista-archivos">
-              <table class="table">
+              <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th>Decreto</th>
-                    <th>Expediente</th>
-                    <th>Resumen</th>
-                    <th>Organismo</th>
-                    <th>Fecha</th>
+                    <th>DECRETO</th>
+                    <th>EXPEDIENTE</th>
+                    <th>RESUMEN</th>
+                    <th>ORGANISMO</th>
+                    <th>FECHA</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for archivo in archivos %}
                     <tr>
-                      <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></th>
-                      <th>{{ archivo.expediente }}</th>
-                      <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></th>
+                      <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></td>
+                      <td>{{ archivo.expediente }}</td>
+                      <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></td>
                       <!--MODIFICAR PARA QUE MUESTRE EL NOMBRE DEL ORGANISMO-->
-                      <th>{{ archivo.organismo }}</th>
-                      <th>{{ archivo.fecha_aprobacion }}</th>
+                      <td>{{ archivo.organismo }}</td>
+                      <!--MOSTRAR SOLO FECHA, NO HORA-->
+                      <td>{{ archivo.fecha_aprobacion }}</td>
                     </tr>
                   {% endfor %}
                 </tbody>

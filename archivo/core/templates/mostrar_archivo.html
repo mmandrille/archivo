@@ -29,6 +29,9 @@
                 <h3>Organismo: </h3>
                 <!--REEMPLAZAR POR LA URL Y EL NOMBRE DEL ORGANISMO-->
                 <p class="descripcion"><a href="{{ archivo.organismo }}">{{ archivo.organismo }}</a></p>
+                <h3>Fecha de Aprobación:</h3>
+                <!--MOSTRAR SOLO FECHA, NO HORA-->
+                <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>
                 <hr>
                 <a href="/{{ archivo.archivo.url }}">Descargar</a>
             </div>
