@@ -319,6 +319,7 @@ section.seccion-faq p
 
 .header-content {
    background: #00907e;
+   padding: 40px 0px;
 }
 
 .header-content h2.site-title a {
@@ -344,7 +345,7 @@ section.seccion-faq p
 }
 
 .resultados-titulo {
-    margin: 30px;
+    margin: 30px auto;
 }
 
 .lista-archivos
@@ -389,7 +390,10 @@ section.seccion-faq p
 
 /* Sección Sidebar */
 .sidebar {
-    margin: 80px 0px;
+    margin: 0px;
+}
+.sidebar > h3 {
+    margin-top: 0px;
 }
 
 .sidebar ul {

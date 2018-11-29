@@ -2,16 +2,17 @@
 {% block content %}
 
 <section class="home">
-  <section class="seccion-archivos full-width" id="archivos">
+  <section class="seccion-archivos" id="archivos">
     <div class="header-content col-md-12">
         <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
         <h2 class="site-title"><a href="/">Decretos y Resoluciones</a></h2>
     </div>
 
 
-    <div class="col-md-12">
+    <div class="col-md-12 full-width">
         <section class="mostrar-archivo row" style="padding-bottom: 40px">
-            <h1 class="archivo-titulo col-md-12">{{ archivo.nombre }}</h1>
+            <!--REEMPLAZAR POR EL NOMBRE DEL TIPO-->
+            <h1 class="archivo-titulo col-md-12">{{ archivo.tipo }} {{ archivo.nombre }}</h1>
             <div class="archivo-thumb col-md-4">    
                 <img src="/{{ archivo.captura.url }}" width="300" alt="{{ archivo.nombre }}">
                 <!--<embed src="/{{ archivo.archivo.url }}" type="application/pdf" width="100%" height="600"></embed>-->
@@ -33,7 +34,7 @@
                 <!--MOSTRAR SOLO FECHA, NO HORA-->
                 <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>
                 <hr>
-                <a href="/{{ archivo.archivo.url }}">Descargar</a>
+                <a href="/{{ archivo.archivo.url }}" target="_blank">Descargar</a>
             </div>
         </section>
     </div>
