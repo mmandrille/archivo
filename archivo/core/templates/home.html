@@ -2,59 +2,65 @@
 
 {% block content %}
 <section class="home">
-  <section class="seccion-archivos full-width" id="archivos">
-    <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
-    <br>
-    <h1>Archivos</h1>
-    <!--Buscador-->
-    <form method="post" class="buscar-archivos">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Buscar</button>
-    </form>
-    <hr>
-    {% if buscado %}
-      <h2> Archivos Encontrados</h2>
-    {% else %}
-      <h2> Ultimos Archivos Subidos</h2>
-    {% endif %}
-    <div class="lista-archivos col-md-9">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Decreto</th>
-            <th>Expediente</th>
-            <th>Resumen</th>
-            <th>Organismo</th>
-            <th>Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for archivo in archivos %}
-            <tr>
-              <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></th>
-              <th>{{ archivo.expediente }}</th>
-              <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></th>
-              <th>{{ archivo.organismo }}</th>
-              <th>{{ archivo.fecha_aprobacion }}</th>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+  <section class="seccion-archivos" id="archivos">
+    <div class="header-content col-md-12">
+        <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
+        <h1>Decretos y Resoluciones</h1>
+        <!--Buscador-->
+        <form method="post" class="buscar-archivos">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Buscar</button>
+        </form>
     </div>
-    <div class="sidebar col-md 3">
-      <!--AQUÍ VA EL LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
-      <p>
-        {% for etiqueta in etiquetas %}
-          <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
-        {% endfor %}
-      </p>
-      <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
-      <p>
-        {% for organismo in organismos %}
-          <a href='/organismo/{{ organismo.0 }}'>{{ organismo.1 }}</a>,
-        {% endfor %}
-      </p>
+    <div class="full-width">
+        <div class="col-md-10">
+            {% if buscado %}
+              <h2> Elementos Encontrados</h2>
+            {% else %}
+              <h2> Últimos Subidos</h2>
+            {% endif %}
+            <div class="lista-archivos">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Decreto</th>
+                    <th>Expediente</th>
+                    <th>Resumen</th>
+                    <th>Organismo</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for archivo in archivos %}
+                    <tr>
+                      <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></th>
+                      <th>{{ archivo.expediente }}</th>
+                      <th><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></th>
+                      <!--MODIFICAR PARA QUE MUESTRE EL NOMBRE DEL ORGANISMO-->
+                      <th>{{ archivo.organismo }}</th>
+                      <th>{{ archivo.fecha_aprobacion }}</th>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="sidebar col-md-2">
+          <!--AQUÍ VA EL LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
+          <h4>Filtrar por:</h4>
+          <ul class="filter-list">
+            {% for etiqueta in etiquetas %}
+              <li><a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a></li>
+            {% endfor %}
+          </ul>
+          <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
+          <ul class="filter-list">
+            {% for organismo in organismos %}
+              <li><a href='/organismo/{{ organismo.0 }}'>{{ organismo.1 }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
     </div>
   </section>
 
