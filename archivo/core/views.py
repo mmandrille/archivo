@@ -58,8 +58,9 @@ def mostrar_archivo(request, archivo_id):
         archivo = Archivo.objects.get(pk=archivo_id)
     except Archivo.DoesNotExist:
         raise Http404("El Archivo No Existe")
+    organismos = obtener_organismos()
     #Si salio bien mostramos el archivo
-    return render(request, 'mostrar_archivo.html', {'archivo': archivo, })
+    return render(request, 'mostrar_archivo.html', {'archivo': archivo, 'organismos': organismos})
 
 def mostrar_archivo_nombre(request, archivo_nombre):
     #Intentamos cargar el Archivo

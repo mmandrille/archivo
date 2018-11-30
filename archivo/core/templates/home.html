@@ -42,7 +42,6 @@
                         <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.nombre }}</a></td>
                         <td>{{ archivo.expediente }}</td>
                         <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></td>
-                        <!--MODIFICAR PARA QUE MUESTRE EL NOMBRE DEL ORGANISMO-->
                         <td>{% buscar_organismo archivo.organismo organismos %}</td>
                         <td>{{ archivo.fecha_aprobacion|date:"D d M Y" }}</td>
                       </tr>

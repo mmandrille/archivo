@@ -1,41 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% load core_tags %}
+    <section class="home">
+    <section class="seccion-archivos" id="archivos">
+        <div class="header-content col-md-12">
+            <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
+            <h2 class="site-title"><a href="/">Decretos y Resoluciones</a></h2>
+        </div>
 
-<section class="home">
-  <section class="seccion-archivos" id="archivos">
-    <div class="header-content col-md-12">
-        <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
-        <h2 class="site-title"><a href="/">Decretos y Resoluciones</a></h2>
-    </div>
 
-
-    <div class="full-width">
-        <section class="mostrar-archivo" style="padding-bottom: 40px">
-            <!--REEMPLAZAR POR EL NOMBRE DEL TIPO-->
-            <h1 class="archivo-titulo col-md-12">{{ archivo.nombre }}</h1>
-            <div class="archivo-thumb col-md-4">    
-                <img src="/{{ archivo.captura.url }}" width="300" alt="{{ archivo.nombre }}">
-                <!--<embed src="/{{ archivo.archivo.url }}" type="application/pdf" width="100%" height="600"></embed>-->
-            </div>
-            <div class="col-md-8">
-                <h3>Etiquetas:</h3>
-                <p class="etiquetas">
-                    {% for etiqueta in archivo.etiquetas.all %}
-                        <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
-                    {% endfor %}
-                </p>
-                <h3>Descripción:</h3>
-                <p class="descripcion">{{ archivo.resumen }}</p>
-                <h3>Organismo: </h3>
-                <!--REEMPLAZAR POR LA URL Y EL NOMBRE DEL ORGANISMO-->
-                <p class="descripcion"><a href="/organismo/{{ archivo.organismo }}">{{ archivo.organismo }}</a></p>
-                <h3>Fecha de Aprobación:</h3>
-                <!--MOSTRAR SOLO FECHA, NO HORA-->
-                <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>
-                <hr>
-                <a href="/{{ archivo.archivo.url }}" target="_blank">Descargar</a>
-            </div>
-        </section>
-    </div>
-</section>
+        <div class="full-width">
+            <section class="mostrar-archivo" style="padding-bottom: 40px">
+                <!--REEMPLAZAR POR EL NOMBRE DEL TIPO-->
+                <h1 class="archivo-titulo col-md-12">{{ archivo.nombre }}</h1>
+                <div class="archivo-thumb col-md-4">    
+                    <img src="/{{ archivo.captura.url }}" width="300" alt="{{ archivo.nombre }}">
+                    <!--<embed src="/{{ archivo.archivo.url }}" type="application/pdf" width="100%" height="600"></embed>-->
+                </div>
+                <div class="col-md-8">
+                    <h3>Etiquetas:</h3>
+                    <p class="etiquetas">
+                        {% for etiqueta in archivo.etiquetas.all %}
+                            <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
+                        {% endfor %}
+                    </p>
+                    <h3>Descripción:</h3>
+                    <p class="descripcion">{{ archivo.resumen }}</p>
+                    <h3>Organismo: </h3>
+                    <p class="descripcion"><a href="/organismo/{{ archivo.organismo }}">{% buscar_organismo archivo.organismo organismos %}</a></p>
+                    <h3>Fecha de Aprobación:</h3>
+                    <!--MOSTRAR SOLO FECHA, NO HORA-->
+                    <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>
+                    <hr>
+                    <a href="/{{ archivo.archivo.url }}" target="_blank">Descargar</a>
+                </div>
+            </section>
+        </div>
+    </section>
 {% endblock %}
