@@ -18,6 +18,7 @@ body a {
 {
     margin: auto;
     max-width: 1280px;
+    overflow: hidden;
     width: 100%;
 }
 
@@ -25,12 +26,9 @@ body a {
 
 .navbar
 {
-    background: white;
-    width: 100% !important;
-    height: 100px;
-    border-radius: 0px !important;
-    margin-bottom: 0px !important;
-    z-index: 9;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 5px;
 }
 
 .navbar.sticky
@@ -96,6 +94,138 @@ body a {
     margin-top: 10px;
     margin-right: 10px;
 }
+
+
+
+/* NAV */
+#main-navigation {
+    background-color: rgba(0,0,0,0.5);
+    margin: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+#main-navigation.sticky
+{
+    background-color: rgba(0,0,0,0.75);
+    position: absolute;
+    position: fixed;
+    width: 100%;
+    z-index: 11;
+}
+.navbar
+{
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 5px;
+}
+
+ul.nav li.desplegable a
+{
+    padding-right: 20px;
+}
+
+ul.nav > li > a{
+    color: white;    
+    font-size: 1.2em;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.59);
+    padding-top: 11px;
+    padding-bottom: 12px;
+}
+ul.nav > li > ul.sub-menu li > a{
+    color: #666;
+    font-size: 1.2em;
+    padding-top: 11px;
+    padding-bottom: 12px;
+    text-shadow: none;
+}
+
+ul.nav li:hover > ul.sub-menu
+{
+    display: block;
+    transition:opacity 0.5s linear;
+}
+ul.nav li:hover > ul li:hover > ul.sub-menu {
+    left: 250px;
+    top: 0px;    
+}
+
+ul.nav li > ul.sub-menu {
+    display: none;
+}
+ul.nav li > ul.sub-menu
+{
+    background-color: white;
+    color: #666;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 250px;
+    text-align: center;
+    position: absolute;
+    list-style: none;
+    transition:opacity 0.1s linear;
+}
+
+ul.nav li ul.sub-menu li
+{
+    text-align: left;
+    padding-left: 10px;
+    border-bottom: 1px dotted #e2e2e2;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+ul.nav li ul.sub-menu li:focus,
+ul.nav li ul.sub-menu li:hover,
+ul.nav li ul.sub-menu li:active
+{
+    color: #cbb171;
+    cursor: pointer;
+}
+
+ul.nav li span.triangle
+{
+    color: #cbb172;
+    position: absolute;
+    right: 5px;
+    font-size: 10px;
+    top: 18px;
+}
+
+ul.nav li:hover span.triangle
+{
+    color: #fff;
+}
+
+ul.nav > li > a:hover
+{
+    background: none;
+    background-color: #0493ab !important;
+    text-decoration: none;
+}
+ul.nav > li:hover > ul.sub-menu li a:hover {
+    background-color: #ffffff;
+    color: #cbb171;
+    text-decoration: none;
+}
+
+ul.nav > li.menu-item-has-children > a:after,
+ul.nav li > ul.sub-menu > li.menu-item-has-children > a:after
+{
+    color: #cbb172;
+    font-family: FontAwesome;
+    content: "\f0d7";
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: bottom;
+}
+
+.responsive-menu {
+    display: none;
+}
+/* END NAV */
+
+
 
 .btn-login a
 {
@@ -240,8 +370,8 @@ section.pagina-registro h2, section.seccion-fotos h2
 
 section.seccion-faq hr
 {
-    border-top: 1px solid #516bb3;
-    width: 90%;
+    border-top: 1px solid #00907e;
+    width: 100%;
 }
 
 ul.faq li .contenedor-respuesta
@@ -317,9 +447,32 @@ section.seccion-faq p
 
 /* Header Section */
 
+.header-content:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eaee44+0,33d0ff+100 */
+    background: #eaee44; /* Old browsers */
+    background: -moz-linear-gradient(left, #eaee44 0%, #33d0ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #eaee44 0%,#33d0ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #eaee44 0%,#33d0ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaee44', endColorstr='#33d0ff',GradientType=1 ); /* IE6-9 */
+    opacity: 0.4;
+    z-index: 90;
+}
 .header-content {
-   background: #00907e;
-   padding: 40px 0px;
+   background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/slider/hornocal.jpg) center center no-repeat;
+   background-size: 100%;
+   padding: 80px 0px 40px;
+   position: relative;
+}
+
+.header-content > * {
+    position: relative;
+    z-index: 100;
 }
 
 .header-content h2.site-title a {
@@ -327,6 +480,12 @@ section.seccion-faq p
 }
 .header-content h2.site-title a:hover  {
     color: white;
+}
+
+.header-content p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
 }
 
 /* Content Section */
@@ -340,8 +499,8 @@ section.seccion-faq p
 
 .seccion-archivos hr
 {
-    border-top: 1px solid #f5366d;
-    width: 90%;
+    border-top: 1px solid #00907e;
+    width: 100%;
 }
 
 .resultados-titulo {
@@ -389,17 +548,22 @@ section.seccion-faq p
 
 
 /* Sección Sidebar */
-.sidebar {
+#archivos .sidebar {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
     margin: 0px;
+    padding: 20px 25px;
 }
 .sidebar > h3 {
     margin-top: 0px;
 }
-
+.sidebar > h4 {
+    margin-bottom: 0px;
+}
 .sidebar ul {
-    /*list-style: none;*/
+    list-style: none;
     margin: 0px;
-    padding: 10px;
+    padding: 5px 0px 10px;
 }
 .sidebar ul li {
     margin: 0px;
@@ -418,8 +582,8 @@ section.seccion-faq p
 
 .seccion-fotos hr
 {
-    border-top: 1px solid #f5366d;
-    width: 90%;
+    border-top: 1px solid #00907e;
+    width: 100%;
 }
 
 .seccion-fotos .link-biblioteca
@@ -565,7 +729,7 @@ section.seccion-faq p
    display: block;
    color: #444444;
    /*width: 65%;*/
-   margin: auto;
+   margin: 20px auto;
    align-self: center;
    
 }
@@ -770,9 +934,9 @@ ul.comentarios li
 }
 
 section.pagina-registro hr{
-       max-width: 800px;
+       max-width: 100%;
     margin: auto;
-    border-top-color: #a311f5;
+    border-top-color: #00907e;
     margin-top: 15px;
     margin-bottom: 25px;
 }
@@ -954,3 +1118,206 @@ section.login button:hover
 }
 
 /* FIN ENCONTRATE */
+  
+/* FOOTER */
+
+footer
+{
+    /*box-shadow: inset 0 30px 30px -30px #888;
+    padding-top: 20px;
+    background: #fff;*/
+}
+
+.footer-top {
+    background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/silueta_footer.png) repeat no-repeat bottom;
+    height: 160px;
+    background-size: 800px;
+}
+
+.footer-bottom
+{
+    background: #741918;
+    display: table;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ab8434+0,725423+100 */
+/*background: rgb(171,132,52); /* Old browsers */
+/*background: -moz-linear-gradient(top, rgba(171,132,52,1) 0%, rgba(114,84,35,1) 100%); /* FF3.6-15 */
+/*background: -webkit-linear-gradient(top, rgba(171,132,52,1) 0%,rgba(114,84,35,1) 100%); /* Chrome10-25,Safari5.1-6 */
+/*background: linear-gradient(to bottom, rgba(171,132,52,1) 0%,rgba(114,84,35,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ab8434', endColorstr='#725423',GradientType=0 ); /* IE6-9 */
+}
+
+.footer-bottom hr
+{
+    margin: 10px 0px;
+}
+
+footer h4{
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+footer .redes-sociales
+{
+    text-align: center;
+}
+
+footer .redes-sociales span
+{
+    position: relative;
+    width: 44px;
+    height: 44px;
+    opacity: 0.9;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+footer .redes-sociales span:hover{
+    opacity: 1;
+    background-size: 100%;
+}
+
+footer .icon-facebook
+{
+    background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/facebook.png);
+    background-size: contain;
+}
+
+footer .icon-twitter
+{
+    background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/twitter.png);
+    background-size: contain;
+}
+
+footer .icon-youtube
+{
+    background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/youtube.png);
+    background-size: contain;
+}
+
+footer .icon-instagram
+{
+    background: url(http://www.gajujuy.gob.ar/wp-content/themes/gaJujuy/images/instagram.png);
+    background-size: contain;
+}
+
+footer .copyright
+{
+    background-color: #91251c;
+    font-size: 1.2em;
+    color: #fefefe;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-weight: lighter;
+}
+
+footer ul.secciones
+{
+    list-style: none;
+    width: 150px;
+    margin: auto;
+    font-size: 1.1em;
+    padding: 0px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+footer ul.secciones li a{
+    color: #ddd;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+footer ul.secciones li a:hover
+{
+    color: #fff;
+}
+
+footer ul.noticias
+{
+    list-style: none;
+    text-align: center;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+footer ul.noticias li
+{
+    height: 40px;
+}
+
+footer ul.noticias li a{
+    color: #ddd;
+    font-size: 1.1em;
+}
+
+footer ul.noticias li a:hover,
+footer ul.noticias li a:focus,
+footer ul.noticias li a:active
+{
+    text-decoration: none;
+    color: #fff;
+}
+
+footer ul.noticias hr
+{   
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: rgba(255, 255, 255, 0.11);
+}
+
+footer ul.noticias .imagen
+{
+    width: 100px;
+    height: 100px;
+    background-size: cover !important;
+    background-position: center !important;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+
+footer img.logo-footer
+{
+    width: 100%;
+    max-width: 250px;
+    display: block;
+    margin: auto;
+}
+
+.contacto-footer
+{
+    max-width: 300px;
+    margin: auto;
+}
+
+.contacto-footer h4{
+    text-align: left;
+    line-height: 1.4;
+}
+
+.contacto-footer p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+footer h5{
+    color: #ddd;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* FIN FOOTER */

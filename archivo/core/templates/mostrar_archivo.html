@@ -9,15 +9,14 @@
     </div>
 
 
-    <div class="col-md-12 full-width">
-        <section class="mostrar-archivo row" style="padding-bottom: 40px">
+    <div class="full-width">
+        <section class="mostrar-archivo" style="padding-bottom: 40px">
             <!--REEMPLAZAR POR EL NOMBRE DEL TIPO-->
-            <h1 class="archivo-titulo col-md-12">{{ archivo.tipo }} {{ archivo.nombre }}</h1>
+            <h1 class="archivo-titulo col-md-12">{{ archivo.nombre }}</h1>
             <div class="archivo-thumb col-md-4">    
                 <img src="/{{ archivo.captura.url }}" width="300" alt="{{ archivo.nombre }}">
                 <!--<embed src="/{{ archivo.archivo.url }}" type="application/pdf" width="100%" height="600"></embed>-->
             </div>
-            
             <div class="col-md-8">
                 <h3>Etiquetas:</h3>
                 <p class="etiquetas">
@@ -25,11 +24,11 @@
                         <a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a>,
                     {% endfor %}
                 </p>
-                <h3>Descripcion:</h3>
+                <h3>Descripción:</h3>
                 <p class="descripcion">{{ archivo.resumen }}</p>
                 <h3>Organismo: </h3>
                 <!--REEMPLAZAR POR LA URL Y EL NOMBRE DEL ORGANISMO-->
-                <p class="descripcion"><a href="{{ archivo.organismo }}">{{ archivo.organismo }}</a></p>
+                <p class="descripcion"><a href="/organismo/{{ archivo.organismo }}">{{ archivo.organismo }}</a></p>
                 <h3>Fecha de Aprobación:</h3>
                 <!--MOSTRAR SOLO FECHA, NO HORA-->
                 <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>

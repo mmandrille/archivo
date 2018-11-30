@@ -12,6 +12,7 @@
             {{ form }}
             <button type="submit">Buscar</button>
         </form>
+        <p>Acceda desde aquí a los decretos y resoluciones ministeriales del poder ejecutivo</p>
     </div>
     <div class="full-width">
         <div class="resultados-titulo col-md-12">
@@ -22,7 +23,7 @@
               <h2> Últimos Subidos</h2>
             {% endif %}
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="lista-archivos">
               <table class="table table-striped table-bordered">
                 <thead>
@@ -49,23 +50,26 @@
               </table>
             </div>
         </div>
-        <div class="sidebar col-md-2">
-          <!--LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
+        <div class="sidebar col-md-3">
           <h3>Filtrar por:</h3>
-          <h4>Etiquetas:</h4>
-          <ul class="filter-list">
-            {% for etiqueta in etiquetas %}
-              <li><a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a></li>
-            {% endfor %}
-          </ul>
-          <!--LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
+          <hr>
+          <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
           <h4>Organismos:</h4>
           <ul class="filter-list">
             {% for organismo in organismos %}
               <li><a href='/organismo/{{ organismo.0 }}'>{{ organismo.1 }}</a></li>
             {% endfor %}
           </ul>
+          <!--AQUÍ VA EL LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
+          <hr>
+          <h4>Etiquetas:</h4>
+          <ul class="filter-list">
+            {% for etiqueta in etiquetas %}
+              <li><a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a></li>
+            {% endfor %}
+          </ul>
         </div>
+        <p class="col-md-8 col-md-offset-2" style="text-align: center;">*La información aquí presentada corresponde a los Decretos y resoluciones ministeriales desde el <b><i>#fecha#</i></b> de acuerdo al decreto <b><i>#nro de decreto#</i></b> que resuelve la publicación de los mismos en el portal de Gobierno Abierto.</p>
     </div>
   </section>
 
