@@ -42,8 +42,7 @@
                       <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></td>
                       <!--MODIFICAR PARA QUE MUESTRE EL NOMBRE DEL ORGANISMO-->
                       <td>{{ archivo.organismo }}</td>
-                      <!--MOSTRAR SOLO FECHA, NO HORA-->
-                      <td>{{ archivo.fecha_aprobacion }}</td>
+                      <td>{{ archivo.fecha_aprobacion|date:"D d M Y" }}</td>
                     </tr>
                   {% endfor %}
                 </tbody>
@@ -51,7 +50,7 @@
             </div>
         </div>
         <div class="sidebar col-md-2">
-          <!--AQUÍ VA EL LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
+          <!--LISTADO DE ETIQUETAS MAS USADOS (MAX 10)-->
           <h3>Filtrar por:</h3>
           <h4>Etiquetas:</h4>
           <ul class="filter-list">
@@ -59,7 +58,7 @@
               <li><a href='/etiqueta/{{ etiqueta.id }}'>{{ etiqueta.name }}</a></li>
             {% endfor %}
           </ul>
-          <!--AQUÍ VA EL LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
+          <!--LISTADO DE ORGANISMOS MAS USADOS (MAX 5)-->
           <h4>Organismos:</h4>
           <ul class="filter-list">
             {% for organismo in organismos %}

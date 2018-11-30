@@ -9,7 +9,7 @@ from .models import Archivo, obtener_organismos
 from .forms import BuscarForm
 
 #@login_required
-def home(request):
+def home(request, etiqueta_id=None, organismo_id=None):
     #Obtenemos los archivos que se van a mostrar:
     if request.method == 'POST': #En caso de que se haya realizado una busqueda
         form = BuscarForm(request.POST)
@@ -21,7 +21,16 @@ def home(request):
                 Q(resumen__icontains=form.cleaned_data['texto'])).distinct()
             buscado = True
     else:
-        archivos = Archivo.objects.order_by('fecha_aprobacion')[:12]
+        if etiqueta_id is not None:
+                #Obtenemos etiqueta
+                etiqueta = Tag.objects.get(pk=etiqueta_id)
+                #Obtenemos Archivos Taggeados
+                archivos = Archivo.objects.filter(etiquetas=etiqueta)
+        if organismo_id is not None:
+                #Obtenemos Archivos del organismo
+                archivos = Archivo.objects.filter(organismo=organismo_id)
+        if etiqueta_id is None and organismo_id is None:
+                archivos = Archivo.objects.order_by('fecha_aprobacion')[:12]
         buscado = False
     #ETIQUETAS
     #Obtenemos las 5 tags mas usadas
@@ -42,54 +51,6 @@ def home(request):
     form = BuscarForm
     #Enviamos la pagina
     return render(request, 'home.html', {'archivos': archivos, 'etiquetas': etiquetas, 'organismos': lista_organismos, 'form': form, 'buscado': buscado })
-
-def mostrar_archivos_etiqueta(request, etiqueta_id):
-    #Obtenemos etiqueta
-    etiqueta = Tag.objects.get(pk=etiqueta_id)
-    #Obtenemos Archivos Taggeados
-    archivos = Archivo.objects.filter(etiquetas=etiqueta)
-    #ETIQUETAS
-    #Obtenemos las 5 tags mas usadas
-    etiquetas = Archivo.etiquetas.most_common()[:5]
-    #ORGANISMOS
-    #obtenemos los 10 Organismos mas usados
-    ranking_organismos = Archivo.objects.values("organismo").annotate(count=Count('organismo')).order_by("-count")[:10]
-    #Obtenemos desde el sitio de organigrama todos los organismos > Ver models.py
-    organismos = obtener_organismos()
-    #lista_organismos= [organismo for organismo in organismos if organismo[0] == ranking_organismos[0]['organismo']]
-    lista_organismos=   [organismo #SI, acabas de ver la listcompression mas loca de la historia xD
-                        for organismo_ranking in [ranking['organismo']
-                        for ranking in ranking_organismos]
-                        for organismo in organismos
-                        if organismo[0] == organismo_ranking]
-    print(lista_organismos)
-    #Obtenemos form de busqueda
-    form = BuscarForm
-    #Enviamos la pagina
-    return render(request, 'home.html', {'archivos': archivos, 'etiquetas': etiquetas, 'form': form, 'buscado': False })
-
-def mostrar_archivos_organismo(request, organismo_id):
-    #Obtenemos Archivos del organismo
-    archivos = Archivo.objects.filter(organismo=organismo_id)
-    #ETIQUETAS
-    #Obtenemos las 5 tags mas usadas
-    etiquetas = Archivo.etiquetas.most_common()[:5]
-    #ORGANISMOS
-    #obtenemos los 10 Organismos mas usados
-    ranking_organismos = Archivo.objects.values("organismo").annotate(count=Count('organismo')).order_by("-count")[:10]
-    #Obtenemos desde el sitio de organigrama todos los organismos > Ver models.py
-    organismos = obtener_organismos()
-    #lista_organismos= [organismo for organismo in organismos if organismo[0] == ranking_organismos[0]['organismo']]
-    lista_organismos=   [organismo #SI, acabas de ver la listcompression mas loca de la historia xD
-                        for organismo_ranking in [ranking['organismo']
-                        for ranking in ranking_organismos]
-                        for organismo in organismos
-                        if organismo[0] == organismo_ranking]
-    print(lista_organismos)
-    #Obtenemos form de busqueda
-    form = BuscarForm
-    #Enviamos la pagina
-    return render(request, 'home.html', {'archivos': archivos, 'etiquetas': etiquetas, 'form': form, 'buscado': False })
 
 def mostrar_archivo(request, archivo_id):
     #Intentamos cargar el Archivo
