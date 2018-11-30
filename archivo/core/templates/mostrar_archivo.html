@@ -30,7 +30,7 @@
                     <p class="descripcion"><a href="/organismo/{{ archivo.organismo }}">{% buscar_organismo archivo.organismo organismos %}</a></p>
                     <h3>Fecha de Aprobación:</h3>
                     <!--MOSTRAR SOLO FECHA, NO HORA-->
-                    <p class="descripcion">{{ archivo.fecha_aprobacion }}</p>
+                    <p class="descripcion">{{ archivo.fecha_aprobacion|date:"d/m/Y" }}</p>
                     <hr>
                     <a href="/{{ archivo.archivo.url }}" target="_blank">Descargar</a>
                 </div>

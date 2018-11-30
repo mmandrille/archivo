@@ -43,7 +43,7 @@
                         <td>{{ archivo.expediente }}</td>
                         <td><a href="/repositorio/{{ archivo.id }}">{{ archivo.resumen }}</a></td>
                         <td>{% buscar_organismo archivo.organismo organismos %}</td>
-                        <td>{{ archivo.fecha_aprobacion|date:"D d M Y" }}</td>
+                        <td>{{ archivo.fecha_aprobacion|date:"d/m/Y" }}</td>
                       </tr>
                     {% endfor %}
                   </tbody>
