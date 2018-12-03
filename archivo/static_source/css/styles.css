@@ -482,6 +482,31 @@ section.seccion-faq p
 .header-content h2.site-title a:hover  {
     color: white;
 }
+.header-content .back-button,
+.header-content .back-button:hover,
+.header-content .back-button:visited,
+.header-content .back-button:active {
+    background: #15b694 !important;
+    border: 1px solid #6e7c7b !important;
+    border-bottom-color: #4ca091 !important;
+    border-radius: 8px;
+    color: #fff;
+    display: inline-block !important;
+    font-size: 0.9em !important;
+    margin: auto;
+    padding: 8px 20px !important;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 2px;
+}
+.header-content .back-button:before  {
+    font-family: FontAwesome;
+    content: "\f060";
+    display: inline-block;
+    padding: 0px 15px 0px 0px;
+    vertical-align: bottom;
+}
 
 .header-content p {
     color: white;
@@ -736,6 +761,13 @@ section.seccion-faq p
 }
 .mostrar-archivo h1.archivo-titulo {
     color: #00907e;
+}
+.mostrar-archivo h1.archivo-titulo:before {
+    font-family: FontAwesome;
+    content: "\f0f6";
+    display: inline-block;
+    padding: 0px 15px 0px 0px;
+    vertical-align: bottom;
 }
 
 .mostrar-archivo a {

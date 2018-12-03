@@ -4,15 +4,12 @@
     <section class="home">
     <section class="seccion-archivos" id="archivos">
         <div class="header-content col-md-12">
-          <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
-          <h2 class="site-title"><a href="/">Decretos y Resoluciones</a></h2>
-          <!--Buscador-->
-          <form method="post" class="buscar-archivos">
-              {% csrf_token %}
-              {{ form }}
-              <button type="submit">Buscar</button>
-          </form>
-          <p>Acceda desde aquí a los decretos y resoluciones ministeriales del poder ejecutivo</p>
+            <!--Listado de Archivos (Aca deberias generar los bloques irregulares)-->
+            <h2 class="site-title"><a href="/">Decretos y Resoluciones</a></h2>
+            <div class="buscar-archivos">
+                <a href="/" class="back-button">Volver</a>
+            </div>
+            <p>Acceda desde aquí a los decretos y resoluciones ministeriales del poder ejecutivo</p>
         </div>
 
 
