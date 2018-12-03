@@ -59,8 +59,10 @@ def mostrar_archivo(request, archivo_id):
     except Archivo.DoesNotExist:
         raise Http404("El Archivo No Existe")
     organismos = obtener_organismos()
+    #Obtenemos form de busqueda
+    form = BuscarForm
     #Si salio bien mostramos el archivo
-    return render(request, 'mostrar_archivo.html', {'archivo': archivo, 'organismos': organismos})
+    return render(request, 'mostrar_archivo.html', {'archivo': archivo, 'organismos': organismos, 'form': form})
 
 def mostrar_archivo_nombre(request, archivo_nombre):
     #Intentamos cargar el Archivo
