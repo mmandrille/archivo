@@ -1,7 +1,12 @@
 $(document).ready()
 {
+
+  $(document).on('click', '.menu-toggle', function() {
+    console.log('Te escribo!!!');
+    $('.primary-nav').toggle();
+  });
   
-  $('ul.faq li a').on("click", function(event)
+  /*$('ul.faq li a').on("click", function(event)
   {
     event.preventDefault();
     $('ul.faq li').removeClass("active");
@@ -112,6 +117,6 @@ $(document).ready()
 		} else {
 			$('.navbar').removeClass('sticky');
 		}
-	});
+	});*/
   
 }
