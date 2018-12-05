@@ -19,7 +19,7 @@ def home(request, etiqueta_id=None, organismo_id=None):
                 Q(nombre__icontains=form.cleaned_data['texto'])|
                 Q(etiquetas__name=form.cleaned_data['texto'])|
                 Q(resumen__icontains=form.cleaned_data['texto'])).distinct()
-            buscado = True
+            buscado = form.cleaned_data['texto']
     else:
         if etiqueta_id is not None:
                 #Obtenemos etiqueta
