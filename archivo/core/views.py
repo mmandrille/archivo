@@ -5,7 +5,8 @@ from django.db.models import Q, Count
 #Import incluidos
 from taggit.models import Tag
 #Import Personales
-from .models import Archivo, obtener_organismos
+from .models import Archivo
+from .api import obtener_organismos
 from .forms import BuscarForm
 
 #@login_required

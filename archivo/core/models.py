@@ -14,21 +14,13 @@ from taggit.managers import TaggableManager
 
 #Import Personales
 from archivo.settings import MEDIA_URL
+from .api import obtener_organismos
 
 #Create your choise fields here
 TIPOS_DE_ARCHIVOS = (
         (1, 'Resolución'),
         (2, 'Decreto'),
     )
-
-#Funciones API
-def obtener_organismos():
-	r = requests.get('http://organigrama.jujuy.gob.ar/ws_org/')
-	orgs = json.loads(r.text)['data']
-	organismos = list()
-	for org in orgs:
-		organismos.append((org['id'],org['nombre']))
-	return organismos
 
 #Create your models here.
 class Archivo(models.Model):
