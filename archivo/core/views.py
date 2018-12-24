@@ -47,7 +47,6 @@ def home(request, etiqueta_id=None, organismo_id=None):
                         for ranking in ranking_organismos]
                         for organismo in organismos
                         if organismo[0] == organismo_ranking]
-    print(lista_organismos)
     #Obtenemos form de busqueda
     form = BuscarForm
     #Enviamos la pagina
