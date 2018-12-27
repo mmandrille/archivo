@@ -6,3 +6,4 @@ archivos/*
 static/*
 .idea/
 venv/
+*.log
