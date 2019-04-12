@@ -6,6 +6,7 @@ archivos/*
 */archivos/*
 static/*
 */static/*
+*/migrations/*
 
 # Django #
 *.log
